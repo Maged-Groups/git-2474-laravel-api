@@ -13,7 +13,19 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        // Get all users' data
+        // return User::get();
+        // return User::all();
+
+        // Get specific fields
+        // return User::all(['id', 'name', 'roles']);
+        // return User::get(['id', 'name', 'roles']);
+
+        // Get all user with count of posts for each user
+
+        // return User::with('posts')->get();
+        // return User::withCount('posts')->get();
+        return User::with('posts')->withCount('posts')->get();
     }
 
 
@@ -22,15 +34,27 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-       return 'OK';
+        return 'OK';
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return $user;
+        // Get single user with her/his posts and comments
+        // return User::
+        //     with('posts')
+        //     ->with('comments')
+        //     ->where('id', '=', $id)
+        //     ->first();
+
+        // return User::
+        //     with(['posts', 'comments'])
+        //     ->where('id', '=', $id)
+        //     ->first();
+
+
     }
 
 
