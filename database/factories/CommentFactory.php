@@ -18,7 +18,8 @@ class CommentFactory extends Factory
      */
     public function definition(): array
     {
-        $rand_post_id = Post::all()->random()->id;
+        // $rand_post_id = Post::all()->random()->id;
+        $rand_post_id = Post::where('post_status_id', '=', 2)->get()->random()->id;
 
         $rand_user_id = User::whereNot('roles', 'guest')->get()->random()->id;
 

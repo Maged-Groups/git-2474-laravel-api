@@ -22,7 +22,8 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'min:3|max:20',
+            'mobile' => 'size:11',
         ];
     }
 }

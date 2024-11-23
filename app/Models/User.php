@@ -10,6 +10,33 @@ class User extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        'email_verified_at',
+        'password',
+        'roles',
+        'remember_token',
+        'updated_at',
+        'deleted_at'
+    ];
+
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'mobile'
+    ];
+
+
+    public function casts(): array
+    {
+        return [
+            'password' => 'hashed'
+        ];
+    }
+
+
+    
 
 
     // Relationships

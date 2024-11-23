@@ -34,7 +34,11 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        return 'OK';
+        // return $request->mobile;
+        $data = $request->validated(); // return an array
+
+        return User::create($data);
+
     }
 
     /**
@@ -49,12 +53,10 @@ class UserController extends Controller
         //     ->where('id', '=', $id)
         //     ->first();
 
-        // return User::
-        //     with(['posts', 'comments'])
-        //     ->where('id', '=', $id)
-        //     ->first();
-
-
+        return User::
+            with(['posts.comments.user', 'posts.postStatus'])
+            ->where('id', '=', $id)
+            ->first();
     }
 
 
@@ -64,7 +66,14 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        return $request;
+        // return $request;
+        $data = $request->validated();
+
+        if ($user->update($data))
+            return 'User Updated Successfully';
+
+        return 'Something went wrong, please reload the page and try again';
+
     }
 
     /**
