@@ -60,7 +60,6 @@ class UserController extends Controller
     }
 
 
-
     /**
      * Update the specified resource in storage.
      */
@@ -81,9 +80,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        return $user;
+        return $user->delete();
     }
-
 
     /**
      * Show all employees in specific role.
@@ -94,5 +92,19 @@ class UserController extends Controller
 
     }
 
+    public function trashed()
+    {
+        return User::onlyTrashed()->get();
+    }
 
+    public function restore($id)
+    {
+        $user = User::withTrashed()->where('id', $id)->first();
+
+        if ($user->trashed()) {
+           return $user->restore();
+        } else {
+            return 'The user is already in your company';
+        }
+    }
 }
