@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "f690675f-c936-421e-9634-662da73a2ab7",
+		"name": "Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32428259"
+	},
+	"item": [
+		{
+			"name": "All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{users}}",
+					"host": [
+						"{{users}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{users}}20",
+					"host": [
+						"{{users}}20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "maged m. yaseen",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "magedyaseengroups@gmail.com3",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "eample-user-1@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "mobile",
+							"value": "01024750243",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "remember_token",
+							"value": "ksdlj3oihnlksfdl;fksdl",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{users}}",
+					"host": [
+						"{{users}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Maged",
+							"type": "text"
+						},
+						{
+							"key": "mobile",
+							"value": "01024750242",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{users}}20",
+					"host": [
+						"{{users}}20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{users}}20",
+					"host": [
+						"{{users}}20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Role",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{users}}role/guest",
+					"host": [
+						"{{users}}role"
+					],
+					"path": [
+						"guest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trashed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{users}}trashed",
+					"host": [
+						"{{users}}trashed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Restore",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/vnd.api+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{users}}20/restore",
+					"host": [
+						"{{users}}20"
+					],
+					"path": [
+						"restore"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "users",
+			"value": "{{base_url}}users/"
+		}
+	]
+}
