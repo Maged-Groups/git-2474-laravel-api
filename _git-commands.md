@@ -27,3 +27,9 @@ git commit -m "Your Message"
 
 ## return to the last saved progress
 git checkout main
+
+
+## Get the updates from forked repo
+git remote add upstream https://github.com/Maged-Groups/git-2474-laravel-api.git
+
+git pull upstream day6
