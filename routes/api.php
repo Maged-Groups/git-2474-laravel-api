@@ -16,3 +16,4 @@ Route::apiResource('users', UserController::class);
 Route::apiResource('posts', PostController::class);
 
 // New Line on GIT Hub
+// Second new line
