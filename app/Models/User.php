@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $hidden = [
         'email_verified_at',
@@ -36,7 +37,7 @@ class User extends Model
     }
 
 
-    
+
 
 
     // Relationships
@@ -67,4 +68,6 @@ class User extends Model
     {
         return $this->hasMany(Reply::class);
     }
+
+
 }
