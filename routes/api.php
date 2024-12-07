@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
+// Unprotected Routes
 // Auth
 Route::controller(AuthController::class)
     ->prefix('auth')
@@ -16,8 +17,10 @@ Route::controller(AuthController::class)
 
 
 
+// Protected Routes
 
 Route::middleware('auth:sanctum')->group(function () {
+    // Users
     Route::controller(UserController::class)
         ->prefix('users')
         ->group(function () {
@@ -28,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('users', UserController::class);
 
+    // posts
     Route::apiResource('posts', PostController::class);
 
 });
