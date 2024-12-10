@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,7 +20,6 @@ class User extends Authenticatable
     protected $hidden = [
         'email_verified_at',
         'password',
-        'roles',
         'remember_token',
         'updated_at',
         'deleted_at'
@@ -30,7 +30,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'mobile'
+        'mobile',
+        'roles',
     ];
 
 
@@ -41,8 +42,28 @@ class User extends Authenticatable
         ];
     }
 
+    // Accessors and Mutators (Attributes)
+    function roles(): Attribute
+    {
+        return Attribute::make(
+            set: fn($val) => implode(',', $val),
+            get: fn($val) => explode(',', $val)
+        );
+    }
 
+    function name(): Attribute
+    {
+        return Attribute::make(
+            set: fn($val) => ucwords($val),
+            get: fn($val) => strtoupper($val)
+        );
+    }
 
+    function id ():Attribute {
+        return Attribute::make(
+            get: fn ($val) => strval($val)
+        );
+    }
 
 
     // Relationships

@@ -34,8 +34,13 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        // return $request->mobile;
+
         $data = $request->validated(); // return an array
+
+        // $data['roles'] = implode(',', $data['roles']);
+
+        // return $data;
+
 
         return User::create($data);
 

@@ -24,7 +24,8 @@ class AuthController extends Controller
 
             $user = Auth::user();
 
-            $token = $user->createToken('login', ['*'], now()->addSeconds(30))->plainTextToken;
+            $token = $user->createToken('login', ['*'], now()->addHours(30))->plainTextToken;
+
 
             return ['user' => $user, 'token' => $token];
 
