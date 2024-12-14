@@ -13,11 +13,30 @@ class CheckRoles
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, string $whoCanAccess): Response
     {
 
-        throw new \Exception('You are not you');
+        // General user roles
+        $user_abilities = auth()->user()->roles;
+
+        // Roels set to the token
+        // $user_abilities = auth()->user()->currentAccessToken()->abilities;
+
+        $route_abilities = explode('|', $whoCanAccess);
+
+        $match = array_intersect(
+            $user_abilities,
+            $route_abilities
+        );
+
+
+        if (count( $match) === 0) {
+            throw new \Exception('You have no access to this page');
+        }
 
         return $next($request);
     }
 }
+
+
+

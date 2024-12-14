@@ -19,14 +19,24 @@ Route::controller(AuthController::class)
 
 // Protected Routes
 
-Route::middleware(['auth:sanctum', 'roles'])
+Route::middleware(['auth:sanctum'])
     ->group(function () {
+
+        // Auth
+        Route::controller(AuthController::class)
+            ->prefix('auth')
+            ->group(function () {
+            Route::post('logout', 'logout');
+            Route::post('logout-all', 'logout_all');
+            Route::post('change-password', 'change_password');
+        });
+
         // Users
         Route::controller(UserController::class)
             ->prefix('users')
             ->group(function () {
-            Route::get('trashed', 'trashed');
-            Route::put('{id}/restore', 'restore');
+            Route::get('trashed', 'trashed')->middleware('roles:hr|admin|moderator');
+            Route::put('{id}/restore', 'restore')->middleware('roles:hr|admin');
             Route::get('role/{role}', 'role');
         });
 
