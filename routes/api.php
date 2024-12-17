@@ -14,12 +14,13 @@ Route::controller(AuthController::class)
     ->prefix('auth')
     ->group(function () {
         Route::post('login', 'login');
+        Route::post('register', 'register');
     });
 
 
 // Protected Routes
 
-Route::middleware(['auth:sanctum'])
+Route::middleware(['auth:sanctum', 'verified'])
     ->group(function () {
 
         // Auth

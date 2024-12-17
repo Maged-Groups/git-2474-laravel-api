@@ -1,0 +1,12 @@
+{
+    "success": false,
+    "message": "Why the response has fail",
+    "status": 500
+}
+,
+{
+        "success": true,
+        "message": "OK",
+        "status": 202,
+        "data": {}
+,}
